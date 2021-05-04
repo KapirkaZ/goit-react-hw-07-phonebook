@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "name": "Iryna Zotovych",
+      "number": "+380663940492",
+      "id": 1
+    },
+    {
+      "name": "Elon Musk",
+      "number": "18006138840",
+      "id": 2
+    },
+    {
+      "name": "Bill Gates",
+      "number": "+905302362098",
+      "id": 3
+    }
+  ]
+}

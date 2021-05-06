@@ -1,44 +1,77 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import contactsActions from "./contactsActions";
+import actions from "./contactsActions";
 
 import errorMessage from "../../components/Notification/Notification";
 
-const INITIAL_DATA = [
-  // { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-  // { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-  // { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-  // { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-];
+const {
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
+  changeFilter,
+} = actions;
 
-const addContacts = (state, action) => {
-  const names = state.map((item) => item.name.toLowerCase());
-  const isNotUniqueContact = names.includes(
-    action.payload.contact.name.toLowerCase().trim()
-  );
+// const addContacts = (state, action) => {
+//   const names = state.map((item) => item.name.toLowerCase());
+//   const isNotUniqueContact = names.includes(
+//     action.payload.contact.name.toLowerCase().trim()
+//   );
 
-  if (isNotUniqueContact) {
-    errorMessage(action.payload.contact.name);
-    return state;
-  } else {
-    return [...state, action.payload.contact];
-  }
-};
+//   if (isNotUniqueContact) {
+//     errorMessage(action.payload.contact.name);
+//     return state;
+//   } else {
+//     return [...state, action.payload.contact];
+//   }
+// };
 
-const removeContacts = (state, action) => {
-  return state.filter(({ id }) => id !== action.payload);
-};
+// const removeContacts = (state, action) => {
+//   return state.filter(({ id }) => id !== action.payload);
+// };
 
-const items = createReducer(INITIAL_DATA, {
-  [contactsActions.addContacts]: addContacts,
-  [contactsActions.removeContacts]: removeContacts,
+const items = createReducer([], {
+  [fetchContactSuccess]: (_, { payload }) => payload,
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
+  [deleteContactSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
 const filter = createReducer("", {
-  [contactsActions.changeFilter]: (state, action) => action.payload,
+  [changeFilter]: (_, action) => action.payload,
 });
 
+const loading = createReducer(false, {
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
+  [fetchContactRequest]: () => true,
+  [fetchContactSuccess]: () => false,
+  [fetchContactError]: () => false,
+});
+
+const error = createReducer(false, {
+  [addContactRequest]: () => false,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => true,
+  [deleteContactRequest]: () => false,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => true,
+  [fetchContactRequest]: () => false,
+  [fetchContactSuccess]: () => false,
+  [fetchContactError]: () => true,
+});
 export default combineReducers({
   items,
   filter,
+  loading,
+  error,
 });

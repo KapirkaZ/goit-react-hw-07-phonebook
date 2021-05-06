@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  background-color: #fff;
+  background-image: url("https://pixabay.com/get/gfbacf6cf2a56c09a9be8e6e5454f95bde3b92564a85dd8bc613ec90f6af28712a68b4e11234991cb9223c6c17c5c56909fd6f15ddb33fdb5e18e37967301ddd8_1920.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #2a2a2a;
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}

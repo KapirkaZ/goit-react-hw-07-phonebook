@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import actions from "./contactsActions";
 
-import errorMessage from "../../components/Notification/Notification";
+// import errorMessage from "../../components/Notification/Notification";
 
 const {
   fetchContactRequest,

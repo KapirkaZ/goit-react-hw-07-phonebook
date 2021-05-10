@@ -14,12 +14,12 @@ const addContact = (name, number) => (dispatch) => {
 };
 
 const fetchContacts = () => (dispatch) => {
-  dispatch(contactsActions.fetchContactsRequest());
+  dispatch(contactsActions.fetchContactRequest());
 
   axios
     .get("/contacts")
-    .then(({ data }) => dispatch(contactsActions.fetchContactsSuccess(data)))
-    .catch((error) => dispatch(contactsActions.fetchContactsError(error)));
+    .then(({ data }) => dispatch(contactsActions.fetchContactSuccess(data)))
+    .catch((error) => dispatch(contactsActions.fetchContactError(error)));
 };
 
 const deleteContact = (id) => (dispatch) => {

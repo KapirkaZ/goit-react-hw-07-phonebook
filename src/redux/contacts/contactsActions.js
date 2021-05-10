@@ -4,9 +4,9 @@ const addContactRequest = createAction("contacts/addRequest");
 const addContactSuccess = createAction("contacts/addSuccess");
 const addContactError = createAction("contacts/addError");
 
-const fetchContactsRequest = createAction("contacts/fetchRequest");
-const fetchContactsSuccess = createAction("contacts/fetchSuccess");
-const fetchContactsError = createAction("contacts/fetchError");
+const fetchContactRequest = createAction("contacts/fetchRequest");
+const fetchContactSuccess = createAction("contacts/fetchSuccess");
+const fetchContactError = createAction("contacts/fetchError");
 
 const removeContactRequest = createAction("contacts/removeRequest");
 const removeContactSuccess = createAction("contacts/removeSuccess");
@@ -18,9 +18,9 @@ export default {
   addContactRequest,
   addContactSuccess,
   addContactError,
-  fetchContactsRequest,
-  fetchContactsSuccess,
-  fetchContactsError,
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
   removeContactRequest,
   removeContactSuccess,
   removeContactError,
